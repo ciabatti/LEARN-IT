@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TrainerControllerTest {
     @Test
-    public void uploadPhotosAndVideos() {
+    public void uploadSlidesAndVideos() {
         TrainerController trainerController = new TrainerController();
         Trainer trainer = new Trainer("test.test@mail.com", "Mario", "Rossi");
         TrainerDAO trainerDAO = new TrainerDAO();
@@ -42,7 +42,7 @@ public class TrainerControllerTest {
     }
 
     @Test
-    public void viewPhotosAndVideos() {
+    public void viewSlidesAndVideos() {
         TrainerController trainerController = new TrainerController();
         Trainer trainer = new Trainer("test.test@mail.com", "Mario", "Rossi");
         TrainerDAO trainerDAO = new TrainerDAO();
@@ -66,7 +66,7 @@ public class TrainerControllerTest {
     }
 
     @Test
-    public void deletePhotosAndVideos() {
+    public void deleteSlidesAndVideos() {
         TrainerController trainerController = new TrainerController();
         Trainer trainer = new Trainer("test.test@mail.com", "Mario", "Rossi");
         TrainerDAO trainerDAO = new TrainerDAO();
@@ -93,27 +93,27 @@ public class TrainerControllerTest {
 
     @Test
     public void viewEmployeeInfo() {
-        Employee child = new Employee("ABC123", "Marta", "Verdi", 33, "test");
+        Employee employee = new Employee("ABC123", "Marta", "Verdi", 33, "test");
         FeeStrategy feeStrategy = new SingleEmployeeFee();
-        Subscription subscription = new Subscription(1, child, feeStrategy, false);
-        child.setSubscription(subscription);
+        Subscription subscription = new Subscription(1, employee, feeStrategy, false);
+        employee.setSubscription(subscription);
 
-        EmployeeDAO childDAO = new EmployeeDAO();
+        EmployeeDAO employeeDAO = new EmployeeDAO();
         TrainerController trainerController = new TrainerController();
 
         try{
-            childDAO.insertEmployee(child, subscription, "abc123");
-            Employee c = trainerController.viewEmployeeInfo(child.getIdcode());
-            assertEquals(c.getIdcode(), child.getIdcode());
-            assertEquals(c.getName(), child.getName());
-            assertEquals(c.getSurname(), child.getSurname());
-            assertEquals(c.getAge(), child.getAge());
-            assertEquals(c.getSubscription().getFee(), child.getSubscription().getFee());
+            employeeDAO.insertEmployee(employee, subscription, "abc123");
+            Employee c = trainerController.viewEmployeeInfo(employee.getIdcode());
+            assertEquals(c.getIdcode(), employee.getIdcode());
+            assertEquals(c.getName(), employee.getName());
+            assertEquals(c.getSurname(), employee.getSurname());
+            assertEquals(c.getAge(), employee.getAge());
+            assertEquals(c.getSubscription().getFee(), employee.getSubscription().getFee());
         } catch (SQLException | ClassNotFoundException  e) {
             e.printStackTrace();
         } finally {
             try {
-                childDAO.delete(child);
+                employeeDAO.delete(employee);
             } catch (SQLException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
@@ -121,28 +121,28 @@ public class TrainerControllerTest {
     }
 
     @Test
-    public void viewEmployeerenList(){
-        Employee child = new Employee("MMMVVV", "Marta", "Verdi", 33, "test");
+    public void viewEmployeeList(){
+        Employee employee = new Employee("MMMVVV", "Marta", "Verdi", 33, "test");
         FeeStrategy feeStrategy = new SingleEmployeeFee();
-        Subscription subscription = new Subscription(1, child, feeStrategy, false);
+        Subscription subscription = new Subscription(1, employee, feeStrategy, false);
 
-        EmployeeDAO childDAO = new EmployeeDAO();
+        EmployeeDAO employeeDAO = new EmployeeDAO();
         Admin admin = new Admin();
         ArrayList<Employee> employees;
 
         try{
-            childDAO.insertEmployee(child, subscription, "abc123");
+            employeeDAO.insertEmployee(employee, subscription, "abc123");
             employees = admin.viewEmployeesList();
-            assertEquals( employees.get(employees.size()-1).getIdcode(), child.getIdcode());
-            assertEquals( employees.get(employees.size()-1).getName(), child.getName());
-            assertEquals( employees.get(employees.size()-1).getSurname(), child.getSurname());
-            assertEquals( employees.get(employees.size()-1).getAge(), child.getAge());
-            assertEquals( employees.get(employees.size()-1).getRole(), child.getRole());
+            assertEquals( employees.get(employees.size()-1).getIdcode(), employee.getIdcode());
+            assertEquals( employees.get(employees.size()-1).getName(), employee.getName());
+            assertEquals( employees.get(employees.size()-1).getSurname(), employee.getSurname());
+            assertEquals( employees.get(employees.size()-1).getAge(), employee.getAge());
+            assertEquals( employees.get(employees.size()-1).getRole(), employee.getRole());
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
             try {
-                childDAO.delete(child);
+                employeeDAO.delete(employee);
             } catch (SQLException |ClassNotFoundException e) {
                 e.printStackTrace();
             }

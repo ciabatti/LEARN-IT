@@ -51,7 +51,7 @@ public class CompanyControllerTest {
     }
 
     @Test
-    public void viewPhotosAndVideos() {
+    public void viewSlidesAndVideos() {
         TrainerController trainerController = new TrainerController();
         Trainer trainer = new Trainer("paolorossi@mail.com", "Paolo", "Rossi");
         TrainerDAO trainerDAO = new TrainerDAO();
