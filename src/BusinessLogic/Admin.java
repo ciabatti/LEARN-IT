@@ -77,10 +77,10 @@ public class Admin {
         courseDAO.deleteCourse(course);
 
         CompanyDAO companyDAO = new CompanyDAO();
-        notifier.sendEmailCompany(companyDAO.getAllCompanies(), "Course deleted", "an course has been deleted. You can check it on the website.");
+        notifier.sendEmailCompany(companyDAO.getAllCompanies(), "Course deleted", "a course has been deleted. You can check it on the website.");
 
         TrainerDAO trainerDAO = new TrainerDAO();
-        notifier.sendEmailTrainer(trainerDAO.getAllTrainers(), "Course deleted", "an course has been deleted. You can check it on the website.");
+        notifier.sendEmailTrainer(trainerDAO.getAllTrainers(), "Course deleted", "a course has been deleted. You can check it on the website.");
     }
 
     public void modifyCourse(Course course) throws SQLException, ParseException, MessagingException, ClassNotFoundException {
@@ -88,10 +88,10 @@ public class Admin {
         courseDAO.modifyCourse(course);
 
         CompanyDAO companyDAO = new CompanyDAO();
-        notifier.sendEmailCompany(companyDAO.getAllCompanies(), "Course modified", "an course has been modified. You can check it on the website.");
+        notifier.sendEmailCompany(companyDAO.getAllCompanies(), "Course modified", "a course has been modified. You can check it on the website.");
 
         TrainerDAO trainerDAO = new TrainerDAO();
-        notifier.sendEmailTrainer(trainerDAO.getAllTrainers(), "Course modified", "an course has been modified. You can check it on the website.");
+        notifier.sendEmailTrainer(trainerDAO.getAllTrainers(), "Course modified", "a course has been modified. You can check it on the website.");
 
     }
 
