@@ -23,7 +23,7 @@ public class CompanyController {
         FeeStrategy feeStrategy;
         if(empoyees.isEmpty())
             feeStrategy = new SingleEmployeeFee();
-        else if (empoyees.size() == 1) {
+        else if (empoyees.size() >= 1) {
             feeStrategy = new MultipleEmployeesFee();
             SubscriptionDAO subscriptionDAO = new SubscriptionDAO();
             subscriptionDAO.editFeeStrategy(empoyees.get(0).getIdcode(), feeStrategy);
